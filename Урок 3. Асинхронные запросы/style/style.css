@@ -44,6 +44,7 @@ header {
 header .headerInside {
   max-width: 1200px;
   margin: 0 auto;
+  text-align: end;
 }
 
 header .logo {
@@ -93,6 +94,37 @@ header .btn-cart:focus {
   outline: none;
   -webkit-box-shadow: none;
           box-shadow: none;
+}
+
+header .btn-search {
+  background-color: transparent;
+  border: none;
+  color: #fafafa;
+  font-size: 1.2em;
+  position: absolute;
+  bottom: 5px;
+  right: 0;
+}
+
+header .search-form {
+  position: relative;
+  margin-right: 50px;
+  display: inline-block;
+}
+
+header .search-field {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 200px;
+  color: #fafafa;
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #fafafa;
+}
+
+header .search-field:focus {
+  outline: none;
 }
 
 .products {
@@ -186,6 +218,10 @@ header .btn-cart:focus {
   outline: none;
   -webkit-box-shadow: none;
           box-shadow: none;
+}
+
+.products .invisible {
+  display: none;
 }
 
 .cart {
