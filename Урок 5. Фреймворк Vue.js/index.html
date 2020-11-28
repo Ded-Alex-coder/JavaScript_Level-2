@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <title>Интернет-магазин</title>
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <div class="headerInside">
+                <a class="logo" href="index.html"><img src="images/origami-logo.svg" alt="Logo"></a>
+                <div class="companyName">Brand</div>
+                <form action="#" class="search-form">
+                    <input type="text" class="search-field" v-model.lazy="name">
+                    <button class="btn-search" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+                <button @click="showCart()" class="btn-cart" type="button">Корзина</button>
+            </div>
+        </header>
+        <main>
+            <div class="cart">
+                <div class="cart-item" v-for="product of bascet" :key="product.id_product">
+                    <div class="product-bio">
+                        <img :src="imgCart" alt="Some img">
+                        <div class="product-desc">
+                            <p class="product-title">{{product.product_name}}</p>
+                            <p class="product-single-price">{{product.price}} $</p>
+                            <div class="quantity">
+                                <button class="del-btn">-</button>
+                                <p class="product-quantity">Quantity: {{ product.quantity }}</p>
+                                <button class="add-btn">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-block">
+                        <p class="product-price">{{ product.price * product.quantity}} $</p>
+                    </div>
+                </div>
+            </div>
+            <div class="products">
+                <h1>Каталог товаров</h1>
+                <div class="product-item" v-for="product of products" :key="product.id_product">
+                    <img :src="imgCatalog" alt="Some img">
+                    <div class="desc">
+                        <h3>{{product.product_name}}</h3>
+                        <p class="product-text">Здесь будет немного текста описывающего продукт. Здесь будет немного
+                            текста описывающего
+                            продукт. Здесь будет немного текста описывающего продукт.</p>
+                        <p>{{product.price}} $</p>
+                        <button class="buy-btn" @click="addProduct(product)">Купить</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <footer>
+        <div class="footerInside">
+
+            <div class="contacts">
+                <div class="contactWrap">
+                    <img src="images/envelope.svg" class="contactIcon">
+                    info@brandshop.ru
+                </div>
+                <div class="contactWrap">
+                    <img src="images/phone-call.svg" class="contactIcon">
+                    8 800 555 00 00
+                </div>
+                <div class="contactWrap">
+                    <img src="images/placeholder.svg" class="contactIcon">
+                    Москва, пр-т Ленина, д. 1 офис 304
+                </div>
+            </div>
+
+            <div class="footerNav">
+                <a href="index.html">Главная</a>
+                <a type="button" href="#">Кнопка для вида</a>
+            </div>
+
+            <div class="social">
+                <img class="socialItem" src="images/vk-social-logotype.svg">
+                <img class="socialItem" src="images/google-plus-social-logotype.svg">
+                <img class="socialItem" src="images/facebook-logo.svg">
+            </div>
+
+            <div class="copyrights">&copy; Brandshop</div>
+        </div>
+    </footer>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"
+        integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP"
+        crossorigin="anonymous"></script>
+    <script src="vue.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
