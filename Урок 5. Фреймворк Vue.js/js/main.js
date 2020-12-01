@@ -9,11 +9,7 @@ const app = new Vue({
       bascet: [],
       imgCatalog: 'https://placehold.it/200x150',
       imgCart: 'https://placehold.it/100x100',
-      quantity: 1,
-
       userSearch: '',
-
-
    },
    methods: {
 
@@ -25,24 +21,21 @@ const app = new Vue({
             })
       },
 
-      notGoods() { // как правильно его вызывать я не понял. В переменной this.bascet получается пусто, и работает не правильно. Правильно сработало, только, когда обратился к этому методу из метода showCart(). Но тогда с каждым нажатием выводится Нет выбранных товаров.
-         if (this.bascet.length) {
-            const block = document.querySelector('.cart')
-            const text = document.createElement('div')
-            text.classList.add('cart__empty')
-            text.innerHTML = `Нет выбранных товаров`
-            block.appendChild(text)
-         } else {
-            // тут будет блок подсчета общей стоимости Я так думаю.
-         }
-      },
-
       addProduct(product) {
-         console.log(product.id_product);
          let find = this.bascet.find(el => el.id_product === product.id_product);
          if (find) {
             find.quantity++;
-            // this._updateCart(find);
+         } else {
+            const prod = Object.assign({ quantity: 1 }, product);//создание нового объекта на основе двух, указанных в параметрах
+            this.bascet.push(prod)
+         }
+      },
+
+      remove(product) {
+         if (product.quantity > 1) {
+            product.quantity--;
+         } else {
+            this.bascet.splice(this.bascet.indexOf(product), 1);
          }
       },
 
@@ -50,24 +43,9 @@ const app = new Vue({
          document.querySelector('.cart').classList.toggle('cart-click');
       },
 
-      // _updateCart(product) {
-      //    let block = document.querySelector(`.cart-item[data-id="${product.id_product}"]`);
-      //    block.querySelector('.product-quantity').textContent = `Quantity: ${product.quantity}`;
-      //    block.querySelector('.product-price').textContent = `= ${product.quantity * product.price} $`;
-      // }
-
-      filter(value) {
-         const regexp = new RegExp(value, 'i');
-         this.filtered = this.products.filter(product => regexp.test(product.product_name));
-         console.log(this.filtered);
-         this.products.forEach(el => {
-            const block = document.querySelector(`.product-item[data-id="${el.id_product}"]`);
-            if (!this.filtered.includes(el)) {
-               block.classList.add('invisible');
-            } else {
-               block.classList.remove('invisible');
-            }
-         })
+      filter() {
+         let regexp = new RegExp(this.userSearch, 'i');
+         this.products = this.products.filter(el => regexp.test(el.product_name));
       }
    },
    mounted() {
@@ -99,9 +77,9 @@ const app = new Vue({
             }
          })
 
-      document.querySelector('.search-form').addEventListener('submit', e => {
-         e.preventDefault();
-         this.filter(document.querySelector('.search-field').value)
-      })
+      // document.querySelector('.search-form').addEventListener('submit', e => {
+      //    e.preventDefault();
+      //    this.filter(document.querySelector('.search-field').value)
+      // })
    }
 })
