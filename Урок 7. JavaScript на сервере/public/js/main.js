@@ -20,23 +20,98 @@ const app = new Vue({
             })
       },
 
+      postJson(url, data) {
+         return fetch(url, {
+            method: 'POST',
+            headers: {
+               "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+         })
+            .then(result => result.json())
+            .catch(error => this.$refs.error.setText(error))
+      },
+      putJson(url, data) {
+         return fetch(url, {
+            method: 'PUT',
+            headers: {
+               "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+         })
+            .then(result => result.json())
+            .catch(error => this.$refs.error.setText(error))
+      },
+
+      delJson(url, data) {
+         return fetch(url, {
+            method: 'DELETE',
+            headers: {
+               "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+         })
+            .then(result => result.json())
+            .catch(error => this.$refs.error.setText(error))
+      },
+
       addProduct(product) {
          let find = this.bascet.find(el => el.id_product === product.id_product);
          if (find) {
-            find.quantity++;
+            this.putJson(`/api/cart/${product.id_product}/${product.product_name}`, { quantity: 1 })
+               .then(data => {
+                  if (data.result) {
+                     find.quantity++;
+                  }
+               })
          } else {
-            const prod = Object.assign({ quantity: 1 }, product);//создание нового объекта на основе двух, указанных в параметрах
-            this.bascet.push(prod)
+            let prod = Object.assign({ quantity: 1 }, product);
+            this.postJson(`api/cart/${product.id_product}/${product.product_name}`, prod)
+               .then(data => {
+                  if (data.result) {
+                     this.bascet.push(prod);
+                  }
+               })
          }
       },
 
       remove(product) {
          if (product.quantity > 1) {
-            product.quantity--;
+            this.putJson(`/api/cart/${product.id_product}/${product.product_name}`, { quantity: -1 })
+               .then(data => {
+                  if (data.result) {
+                     product.quantity--;
+                  }
+               })
          } else {
-            this.bascet.splice(this.bascet.indexOf(product), 1);
+            this.delJson(`/api/cart/${product.id_product}/${product.product_name}`, product)
+               .then(data => {
+                  if (data.result) {
+                     this.bascet.splice(this.bascet.indexOf(product), 1);
+                  } else {
+                     console.log('error');
+                  }
+               })
          }
       },
+
+      // addProduct(product) {
+      //    let find = this.bascet.find(el => el.id_product === product.id_product);
+      //    if (find) {
+      //       find.quantity++;
+      //    } else {
+      //       const prod = Object.assign({ quantity: 1 }, product);//создание нового объекта на основе двух, указанных в параметрах
+      //       this.bascet.push(prod)
+      //    }
+      // },
+
+      // remove(product) {
+      //    if (product.quantity > 1) {
+      //       product.quantity--;
+      //    } else {
+      //       this.bascet.splice(this.bascet.indexOf(product), 1);
+      //    }
+      // },
 
       showCart() {
          document.querySelector('.cart').classList.toggle('cart-click');
