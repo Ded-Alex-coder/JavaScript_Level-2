@@ -1,0 +1,20 @@
+{
+   "amount": 2200,
+   "countGoods": 2,
+   "contents": [
+      {
+         "id_product": 123,
+         "product_name": "Notebook",
+         "price": 2000,
+         "product_img": "../images/products/LENOVO_LEGION.jpg",
+         "quantity": 1
+      },
+      {
+         "id_product": 456,
+         "product_name": "Mouse",
+         "price": 200,
+         "product_img": "../images/products/Mouse.jpg",
+         "quantity": 1
+      }
+   ]
+}
