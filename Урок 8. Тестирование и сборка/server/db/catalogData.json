@@ -1,0 +1,26 @@
+[
+   {
+      "id_product": 123,
+      "product_name": "Notebook",
+      "price": 2000,
+      "product_img": "../images/products/LENOVO_LEGION.jpg"
+   },
+   {
+      "id_product": 456,
+      "product_name": "Mouse",
+      "price": 200,
+      "product_img": "../images/products/Mouse.jpg"
+   },
+   {
+      "id_product": 1283,
+      "product_name": "Keyboard",
+      "price": 20,
+      "product_img": "../images/products/Keyboard.jpg"
+   },
+   {
+      "id_product": 1723,
+      "product_name": "Gamepad",
+      "price": 50,
+      "product_img": "../images/products/Gamepad.jpg"
+   }
+]
