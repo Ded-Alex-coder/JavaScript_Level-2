@@ -5,7 +5,7 @@ module.exports = {
    entry: './src/js/main',
 
    output: {
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, 'publik/js'),
       filename: "./build.Ded-Alex.js"
    },
 
