@@ -1,20 +1,22 @@
-// import Vue from './vue'
-// import error from './errorComponent'
-// import search from './SearchComponent'
-// import products from './ProductComponent'
-// import cart from './BascetComponent'
+import Vue from './vue'
+import products from './ProductComponent'
+import cart from './BascetComponent'
+import search from './SearchComponent'
+import error from './errorComponent'
+
+// import '../style/style.css';
 
 const app = new Vue({
    el: '#app',
    data: {
       showError: false,
    },
-   // components: {
-   //    error,
-   //    search,
-   //    products,
-   //    cart,
-   // },
+   components: {
+      products,
+      cart,
+      search,
+      error,
+   },
    methods: {
 
       getJson(url) {
@@ -73,5 +75,3 @@ const app = new Vue({
       }
    },
 })
-
-// export default app

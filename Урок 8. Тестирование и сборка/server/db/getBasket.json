@@ -10,13 +10,6 @@
             "product_img": "../images/products/Keyboard.jpg"
         },
         {
-            "quantity": 1,
-            "id_product": 456,
-            "product_name": "Mouse",
-            "price": 200,
-            "product_img": "../images/products/Mouse.jpg"
-        },
-        {
             "quantity": 2,
             "id_product": 1723,
             "product_name": "Gamepad",
@@ -24,7 +17,7 @@
             "product_img": "../images/products/Gamepad.jpg"
         },
         {
-            "quantity": 1,
+            "quantity": 2,
             "id_product": 123,
             "product_name": "Notebook",
             "price": 2000,

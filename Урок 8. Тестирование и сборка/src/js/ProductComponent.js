@@ -1,4 +1,4 @@
-Vue.component('products', {
+export default Vue.component('products', {
    data() {
       return {
          products: [],
@@ -43,5 +43,3 @@ Vue.component('product', {
             </div>
     `
 });
-
-// export default products

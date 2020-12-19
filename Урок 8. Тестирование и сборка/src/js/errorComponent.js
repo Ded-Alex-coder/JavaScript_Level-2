@@ -1,4 +1,4 @@
-Vue.component('error', {
+export default Vue.component('error', {
    props: ['visibility'],
    template: `
       <div class="error-block" v-show="visibility">
@@ -6,5 +6,3 @@ Vue.component('error', {
       </div>
    `
 });
-
-// export default error

@@ -1,4 +1,4 @@
-Vue.component('cart', {
+export default Vue.component('cart', {
    data() {
       return {
          bascet: [],
@@ -91,5 +91,3 @@ Vue.component('cart-item', {
          </div>
     `
 });
-
-// export default cart
